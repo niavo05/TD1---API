@@ -1,28 +1,27 @@
-openapi: '3.0.3'
+openapi: 3.0.3
 info:
-  title: STD23025 - TD1
-  version: '1.0.0'
+  title: STD23000 - TD1
+  version: '1.0.1'
 servers:
   - url: https://localhost.std23025.com
 paths:
   /customers:
     get:
       responses:
-        '200':
-          description: TD
+        200:
+          description: List of customers
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/shemas/Customer"
-
+                  $ref: '#/components/schemas/Customer'
 components:
   schemas:
-    /customers:
-      type: ogject
-      propreties:
-      name:
-        type: string
-      age:
-        type: integer
+    Customer:
+      type: object
+      properties:
+        name:
+          type: string
+        age:
+          type: integer
