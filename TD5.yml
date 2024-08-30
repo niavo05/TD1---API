@@ -1,0 +1,58 @@
+openapi: 3.0.3
+info:
+  title: STD23025 - TD5
+  version: '1.0.5'
+servers:
+  - url: https://localhost.std23025.com
+paths:
+  /customers:
+    put:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+        required: true
+      responses:
+        200:
+          description: Complete Customer updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+    patch:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PartialCustomer'
+        required: true
+      responses:
+        200:
+          description: Partial Customer updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+components:
+  schemas:
+    Customer:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        age:
+          type: integer
+    PartialCustomer:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+          nullable: true
+        age:
+          type: integer
+          nullable: true
